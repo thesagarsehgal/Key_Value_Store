@@ -10,14 +10,16 @@ def get_connection():
 	conn=sqlite3.connect(DATABASE)
 	return conn
 
-@app.route("/set/")
+@app.route("/set/",methods=["GET","POST"])
 def set():
 	key=request.args.get("key")
 	value=request.args.get("value")
 
 	conn=get_connection()
-	conn.execute("insert or replace into data values('{}',{});".format(key,value))
-	conn.commit()
+	
+	with conn:
+		conn.execute("insert or replace into data values('{}',{});".format(key,value))
+		conn.commit()
 	
 	print("----------------------------------------")
 	print("set",{"key":key,"value":value})
@@ -27,19 +29,21 @@ def set():
 	
 	return str("{}:{} stored sucessfully".format(key,value))
 
-@app.route("/get/")
+@app.route("/get/", methods=["GET"])
 def get():
 	key=request.args.get("key")
 	
 	conn=get_connection()
-	data=conn.execute("select data_key, data_value from data where data_key = '{}';".format(key))
+	
+	with conn:
+		data=conn.execute("select data_key, data_value from data where data_key = '{}';".format(key))
 	
 	print("----------------------------------------")
 	ans_key,ans_value = None, None
 	for k1,v1 in data:
 		ans_key=k1
 		ans_value=v1
-	print("get",{"key":ans_key,"value":ans_value})
+	print("get",{"key":key,"value":ans_value})
 	print("----------------------------------------")
 	
 	conn.close()
