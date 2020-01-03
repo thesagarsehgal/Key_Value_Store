@@ -15,10 +15,10 @@ def set():
 	key=request.args.get("key")
 	value=request.args.get("value")
 	conn=get_connection()
-	conn.execute("insert into data (data_key, data_value) VALUES ('{}',{});".format(key,value))
+	conn.execute("insert or replace into data values('{}',{});".format(key,value))
 	conn.commit()
 	print("----------------------------------------")
-	print(key,value)
+	print({"key":key,"value":value})
 	print("----------------------------------------")
 	conn.close()
 	return None
@@ -30,7 +30,9 @@ def get():
 	data=conn.execute("select data_key, data_value from data where data_key = '{}';".format(key))
 	print("----------------------------------------")
 	for k,v in data:
-		print("KEY={}\tVALUE={}".format(k,v))
+		key=k
+		value=v
+		print({"key":key,"value":value})
 	print("----------------------------------------")
 	conn.close()
 	return None
