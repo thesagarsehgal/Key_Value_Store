@@ -29,7 +29,7 @@ if(len(sys.argv)>=3):
 			print("value not provided")
 	
 	else:
-		print("wroong command provided")
+		print("wrong command provided")
 
 else:
 	print("insufficient arguments provided")
