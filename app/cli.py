@@ -11,7 +11,7 @@ if(len(sys.argv)>=3):
 else:
 	print("key not provided")
 
-API_URL="http://localhost:5000/"
+API_URL="http://0.0.0.0:5000/"
 
 if(len(sys.argv)>=3):
 	if(command == "get"):
