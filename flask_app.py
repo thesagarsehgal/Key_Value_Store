@@ -18,7 +18,7 @@ def set():
 	conn=get_connection()
 	
 	with conn:
-		conn.execute("insert or replace into data values('{}',{});".format(key,value))
+		conn.execute("insert or replace into data values('{}','{}');".format(key,value))
 		conn.commit()
 	
 	print("----------------------------------------")
@@ -51,4 +51,4 @@ def get():
 	return str("{}".format(ans_value))
 
 if(__name__=="__main__"):
-	app.run(debug=True,threaded=True)
+	app.run(host="0.0.0.0",debug=True,threaded=True)
