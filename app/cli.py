@@ -19,15 +19,20 @@ else:
 
 # get the URL of the API
 API_URL="http://0.0.0.0:5000/"
+# API_URL="https://sagar-key-value-store.herokuapp.com/"
+
 
 # if the command 3 arguments i.e  the command and key are available 
-if(len(sys.argv)>=3):
+if(len(sys.argv)>=2):
 
 	if(command == "get"):
 		
 		# send request to the API and with the parameters
-		response = requests.get(url = "{}get/".format(API_URL), params = {'key': key}) 
-		print(response.text)
+		if(len(sys.argv) >= 3):	
+			response = requests.get(url = "{}get/".format(API_URL), params = {'key': key}) 
+			print(response.text)
+		else:
+			print("key not provided")
 		
 	elif(command == "set"):
 		
@@ -42,6 +47,11 @@ if(len(sys.argv)>=3):
 		else:
 			print("value not provided")
 	
+	elif(command == "reset"):
+
+		response = requests.get(url = "{}reset/".format(API_URL)) 
+		print(response.text)
+
 	else:
 		print("wrong command provided")
 
