@@ -16,6 +16,27 @@ def get_connection():
 	conn=sqlite3.connect(DATABASE)
 	return conn
 
+@app.route("/reset/",methods=["GET","POST"])
+def reset():
+	'''function to reset the database'''
+
+	# gets the key from the request which was recieved
+	conn = get_connection()
+	
+	# locking the database
+	with conn:
+		# drops the table if it exists 
+		conn.execute("drop table if exists data;")
+		# re-create the table, with the specified column names 
+		conn.execute("create table data ( data_key VARCHAR(50) PRIMARY KEY NOT NULL, data_value VARCHAR(50) NOT NULL);")
+	
+	# close the connection with the database
+	conn.close()
+
+	# return the corresponding statement
+	return "Database Reset"
+
+
 # function to set the key,value pairs .... uses GET and POST both methods
 @app.route("/set/",methods=["GET","POST"])
 def set():
