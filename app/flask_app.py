@@ -92,9 +92,9 @@ def set():
 def get():
 	'''
 	gets the value for a given key
-	input=> given a key, get the corresponding value
+	input=> given a key
 	processing=> retrievies the key value from the database
-	output=> return the value corresponding to the query
+	output=> return the value corresponding to the key
 	'''
 
 	# gets the key from the request which as recieved

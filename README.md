@@ -126,8 +126,11 @@ v2
 
 **Tech Stack** 
 - Python
-- Flask 
 - Docker
+- Flask 
+- Gunicorn
+
+The Application has the following features:-
 
 #### 1. RESET
 - Resets the database. It drops the table that stores the key value pair and recreates it.
