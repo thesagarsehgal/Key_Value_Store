@@ -20,7 +20,6 @@ else:
 # get the URL of the API
 API_URL="http://0.0.0.0:5000/"
 
-
 # if the command 3 arguments i.e  the command and key are available 
 if(len(sys.argv)>=2):
 
