@@ -20,5 +20,6 @@ WORKDIR /app
 # expose the port on which the app would be working
 EXPOSE 5000
 
+ENTRYPOINT ["gunicorn"]
 # gunicorn --workers=4 --bind 0.0.0.0:5000 wsgi:app
-CMD ["gunicorn", "--workers", "4","--bind", "0.0.0.0:5000", "wsgi:app"]
+CMD ["--workers","4","--bind", "0.0.0.0:5000", "wsgi:app","--capture-output", "--log-level", "debug"]

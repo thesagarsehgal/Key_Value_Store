@@ -8,17 +8,29 @@ DATABASE = './app_data.db'
 
 # initializing the application 
 app=Flask(__name__)
+app.database = DATABASE
+
 
 # a function to get connection to the database
 def get_connection():
-	''' gets connected to the database and returns the coonection variable '''
+	''' 
+	gets connected to the database and returns the coonection variable 
+	input=> None
+	processing=> connects to the databse
+	output=> connection to the sqlite database
+	'''
 	global DATABASE
 	conn=sqlite3.connect(DATABASE)
 	return conn
 
 @app.route("/reset/",methods=["GET","POST"])
 def reset():
-	'''function to reset the database'''
+	'''
+	function to reset the database
+	input=> None
+	processing=> resets the database, if it exists by dropping the tables
+	output=> String stating that the databse has be reset
+	'''
 
 	# gets the key from the request which was recieved
 	conn = get_connection()
@@ -40,7 +52,12 @@ def reset():
 # function to set the key,value pairs .... uses GET and POST both methods
 @app.route("/set/",methods=["GET","POST"])
 def set():
-	'''sets the keys and value pairs'''
+	'''
+	sets the keys and value pairs
+	input=> key and value taken as input from the request
+	processing=> stores the key and value pair in the database
+	output=> returns a string validating that the key,value pair has been added
+	'''
 
 	# gets the key from the request which was recieved
 	key = request.args.get("key")
@@ -60,9 +77,9 @@ def set():
 		# commiting the changes the in the above statement 
 		conn.commit()
 	
-	print("----------------------------------------")
-	print("set",{"key":key,"value":value})
-	print("----------------------------------------")
+	# print("----------------------------------------")
+	# print("set",{"key":key,"value":value})
+	# print("----------------------------------------")
 	
 	# closing the connection with the databse
 	conn.close()
@@ -73,7 +90,12 @@ def set():
 # function to get the key,value pairs .... uses only GET method .... bcz the database would only be read
 @app.route("/get/", methods=["GET"])
 def get():
-	'''gets the value for a giccen key '''
+	'''
+	gets the value for a given key
+	input=> given a key, get the corresponding value
+	processing=> retrievies the key value from the database
+	output=> return the value corresponding to the query
+	'''
 
 	# gets the key from the request which as recieved
 	key = request.args.get("key")
@@ -86,7 +108,6 @@ def get():
 		# sql quesry to query over the database for the given key
 		data = conn.execute("select data_key, data_value from data where data_key = '{}';".format(key))
 	
-	print("----------------------------------------")	
 	# sets the key and the value to be None  
 	ans_key, ans_value = None, None
 
@@ -97,8 +118,9 @@ def get():
 	
 	# if there was no such key, then the value corresponding to it would be None
 
-	print("get",{"key":key,"value":ans_value})
-	print("----------------------------------------")
+	# print("----------------------------------------")	
+	# print("get",{"key":key,"value":ans_value})
+	# print("----------------------------------------")
 	
 	# close the connection to the database
 	conn.close()
