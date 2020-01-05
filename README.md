@@ -128,9 +128,9 @@ v2
 - Resets the database. It drops the table that stores the key value pair and recreates it.
 
 #### 2. GET
-input=> 		given a key
-processing=> 	retrievies the key value from the database
-output=> 		return the value corresponding to the key
+- **input=>** 		given a key
+- **processing=>** 	retrievies the key value from the database
+- **output=>** 		return the value corresponding to the key
 
 - Gets the value corresponding to the key.
 - For this a SQL query is fired on SQLITE, to get the value.
@@ -138,9 +138,9 @@ output=> 		return the value corresponding to the key
 - If the key is not present, returns `None`
 
 #### 3. SET
-input=> 		key and value taken as input from the request
-processing=> 	stores the key and value pair in the database
-output=> 		returns a string validating that the key,value pair has been added
+- **input=>** 		key and value taken as input from the request
+- **processing=>** 	stores the key and value pair in the database
+- **output=>** 		returns a string validating that the key,value pair has been added
 
 - Sets the value corresponding to the key.
 - For this a SQL query is fired on SQLITE, to set the key,value pairs.
