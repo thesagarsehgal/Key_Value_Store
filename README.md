@@ -22,17 +22,35 @@ source venv/bin/activate
 pip install -r Key_Value_Store/requirements.txt
 ```
 
+5. Shift to the `Key_Value_Store` directory
+```
+cd Key_Value_Store
+```
+
+6. Build the docker container
+```
+docker-compose build
+```
+
+7. Start the docker container
+```
+docker-compose up
+```
+This will start the applocation at `0.0.0.0:5000`.
+
 ### Run directly from DockerHub
 
 0. Install docker in the system
-```
-```
 1. Get the docker-image
 ```
+docker pull sagarsehgal/sagar_key_value_store
 ```
 2. Run the docker-container
 ```
+docker run -p 5000:5000 -t sagarsehgal/sagar_key_value_store:latest
 ```
+This will run the application a
+
 
 ### Test the Application
 
