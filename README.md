@@ -176,3 +176,4 @@ The Application has the following features:-
 #### Others
 - The app has been **Dockerized**, making it easy to deploy
 - Also, the the Flask app now works with **Gunicorn** with 4 workers.
+- Also, the `cli.py` send the request to the module, with the parameters, along with the request, in order to save and retrive the key,value pairs.
