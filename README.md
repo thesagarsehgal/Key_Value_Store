@@ -124,6 +124,11 @@ v2
 
 ### About the Application
 
+**Tech Stack** 
+- Python
+- Flask 
+- Docker
+
 #### 1. RESET
 - Resets the database. It drops the table that stores the key value pair and recreates it.
 
@@ -150,4 +155,3 @@ v2
 #### Others
 - The app has been **Dockerized**, making it easy to deploy
 - Also, the the Flask app now works with **Gunicorn** with 4 workers.
-- 
