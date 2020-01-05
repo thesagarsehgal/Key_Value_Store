@@ -19,7 +19,6 @@ else:
 
 # get the URL of the API
 API_URL="http://0.0.0.0:5000/"
-# API_URL="https://sagar-key-value-store.herokuapp.com/"
 
 
 # if the command 3 arguments i.e  the command and key are available 
