@@ -77,9 +77,9 @@ def set():
 		# commiting the changes the in the above statement 
 		conn.commit()
 	
-	# print("----------------------------------------")
-	# print("set",{"key":key,"value":value})
-	# print("----------------------------------------")
+	print("----------------------------------------")
+	print("set",{"key":key,"value":value})
+	print("----------------------------------------")
 	
 	# closing the connection with the databse
 	conn.close()
@@ -118,9 +118,9 @@ def get():
 	
 	# if there was no such key, then the value corresponding to it would be None
 
-	# print("----------------------------------------")	
-	# print("get",{"key":key,"value":ans_value})
-	# print("----------------------------------------")
+	print("----------------------------------------")	
+	print("get",{"key":key,"value":ans_value})
+	print("----------------------------------------")
 	
 	# close the connection to the database
 	conn.close()
